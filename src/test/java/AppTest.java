@@ -29,10 +29,12 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/");
     fill("#description").with("Mow the lawn");
     submit(".btn");
-    assertThat(pageSource()).contains("Your task has been saved.");
+    click("a", withText("Go Back"));
+    assertThat(pageSource()).contains("Mow the lawn");
   }
 
-  @Test public void mulitpleTaskAreDisplayedTest () {
+  @Test
+  public void mulitpleTaskAreDisplayedTest () {
     goTo("http://localhost:4567/");
     fill("#description").with("Mow the lawn");
     submit(".btn");
