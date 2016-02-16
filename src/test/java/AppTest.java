@@ -8,6 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest extends FluentTest {
   public WebDriver webDriver = new HtmlUnitDriver();
+
+  @Override
   public WebDriver getDefaultDriver() {
       return webDriver;
   }
@@ -17,15 +19,16 @@ public class AppTest extends FluentTest {
 
   @Test
   public void rootTest() {
-      goTo("http://localhost:4567/");
-      assertThat(pageSource()).contains("YOUR H1 HEADER");
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("Task List!");
   }
 
   @Test
-  public void returnsTotalScore() {
-    goTo("http://localhost:4567");
-    fill("#word").with("dog");
+  public void taskIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#description").with("Mow the lawn");
     submit(".btn");
-    assertThat(pageSource()).contains("d-g");
+    assertThat(pageSource()).contains("Your task has been saved.");
   }
+
 }
