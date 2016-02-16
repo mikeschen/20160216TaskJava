@@ -1,5 +1,11 @@
 <h1>Task List!</h1>
 
+<ul>
+#foreach ($task in $tasks)
+  <li>$task.getDescription()</li>
+#end
+</ul>
+<hr/>
 <p>Add a new Task:</p>
 
 <form action="/task" method="post">

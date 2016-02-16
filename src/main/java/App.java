@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.lang.reflect.Method;
 
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -17,9 +19,7 @@ public class App {
 
     post("/task", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-
       ArrayList<Task> tasks = request.session().attribute("tasks");
-
 
       if (tasks == null) {
         tasks = new ArrayList<Task>();
